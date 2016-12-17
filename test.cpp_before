@@ -1,0 +1,96 @@
+#include "test.h"
+
+
+using std::string;
+
+
+test::test(worker *w, string type, string host, int port, int times, int frenc) {
+    this->type = type;
+    this->host = host;
+    this->port = port;
+    this->times = times;
+    evutil_timerclear(&(this->frenc));
+    this->frenc.tv_sec = frenc;
+    p_worker = w;
+    nowtimes = 0;
+}
+
+void test::init() {
+    fd = socket(AF_INET, SOCK_STREAM, 0);
+    evutil_make_socket_nonblocking(fd);
+    bzero(&servaddr, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    inet_pton(AF_INET, host.c_str(), &servaddr.sin_addr);
+    servaddr.sin_port = htons(port);
+    nowtimes = 0;
+    status = TEST_STATUS_INIT;
+}
+
+
+int test::send() {
+    int res = connect(fd, (const struct sockaddr *)&servaddr, sizeof(servaddr));
+    if ((errno != EINPROGRESS) && (errno != EWOULDBLOCK)) {
+        perror("connect failed:");
+        return FAIL;
+    }
+    char temp[20] = {'\0'};
+    sprintf(temp, "%s %d", "hello world", fd);
+    res = write(fd, temp, strlen(temp));
+    status = TEST_STATUS_SEND;
+    add_socketfd_event(fd);
+    return OK;
+}
+
+void test::recv() {
+    buf = (char *)malloc(100);
+    bzero(buf, 100);
+    read(fd, buf, 100);
+    printf("receive data is %s\n");
+    free(buf);
+    status = TEST_STATUS_RECV;
+    return;
+}
+
+int test::deal() {
+    status = TEST_STATUS_DEAL;
+    printf("in deal func buf is %s\n", buf);
+    if (++nowtimes >= times) {
+        printf("----------------------\n");
+        return TEST_STATUS_DONE;
+    } 
+    else {
+        close(fd);
+        send();
+        return TEST_STATUS_DEAL;
+    }
+}
+
+int test::done() {
+    close(fd);
+    nowtimes = 0;
+    return OK;
+}
+
+int test::getfd() {
+    return fd;
+}
+
+
+void test::add_socketfd_event(int fd) {
+    struct event_base *base = p_worker->getbase();
+    struct event *newevent = event_new(base, fd, EV_READ, socket_callback_fn, (void *)this);
+    event_add(newevent, NULL);
+}
+
+
+struct timeval *test::getfrenc() {
+    return &frenc;
+}
+
+struct event *test::get_test_ev() {
+    return &test_ev;
+}
+
+int test::get_test_status() {
+    return status;
+}

@@ -1,0 +1,47 @@
+INFO    2015-10-30 19:13:54    worker run
+INFO    2015-10-30 19:13:54    worker run
+INFO    2015-10-30 19:13:54    worker run
+INFO    2015-10-30 19:13:55    master run
+INFO    2015-10-30 19:13:56    add new conf
+INFO    2015-10-30 19:13:56    genreate type UDP test
+INFO    2015-10-30 19:13:56    FIFO path
+INFO    2015-10-30 19:14:01    udp service 127.0.0.1:9112 is unreachable
+INFO    2015-10-30 19:14:06    udp service 127.0.0.1:9112 is unreachable
+INFO    2015-10-30 19:14:14    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:16    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:21    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:26    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:31    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:36    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:41    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:46    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:51    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:14:56    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:01    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:06    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:11    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:16    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:21    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:26    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:31    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:36    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:41    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:46    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:51    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:15:56    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:01    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:06    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:11    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:16    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:21    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:26    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:31    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:36    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:41    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:46    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:51    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:16:56    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:17:01    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:17:06    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:17:11    udp service 127.0.0.1:9112 is ok
+INFO    2015-10-30 19:17:16    udp service 127.0.0.1:9112 is ok

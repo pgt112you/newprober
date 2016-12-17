@@ -1,0 +1,65 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h> 
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <errno.h>
+#include <map>
+#include <string>
+#include <event2/event.h>
+#include <event2/util.h>
+#include <event2/event_struct.h>
+
+
+#ifndef TEST_H
+#define TEST_H
+
+#ifndef WORKER_H
+#include "worker.h"
+#endif
+
+#define CONTINUE 1
+#define DONE 2
+#define FAIL -1
+#define OK 0
+
+#define TEST_STATUS_INIT 1
+#define TEST_STATUS_SEND 2
+#define TEST_STATUS_RECV 3
+#define TEST_STATUS_DEAL 4
+#define TEST_STATUS_DONE 5
+
+using std::string;
+
+class worker;
+
+class test {
+  public:
+    test(worker *w, string type, string host, int port, int times, int frenc);
+    int getfd();
+    struct timeval *getfrenc();
+    struct event *get_test_ev();
+    int get_test_status();
+    void init();
+    int send();
+    void recv();
+    int deal();
+    int done();
+  private:
+    int fd;
+    struct timeval frenc;
+    struct sockaddr_in servaddr;
+    struct event test_ev;
+    string type;
+    string host;
+    int port;
+    int times;   // 一次探测要运行多少次
+    int nowtimes;    // 在一次探测中目前已经运行了多少次
+    char *buf;
+    worker *p_worker;  // 指向它属于的worker
+    void add_socketfd_event(int fd);
+    int status;    // test status value is TEST_STATUS_DONE, TEST_STATUS_CONTINUE, TEST_STATUS_INIT, TEST_STATUS_RECV, TEST_STATUS_DEAL
+};
+
+#endif
